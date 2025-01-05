@@ -11,22 +11,22 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     // Check if the user is already logged in when the component mounts
-    // useEffect(() => {
-    //     const checkLoginStatus = async () => {
-    //         try {
-    //             const response = await axios.get('https://api.tuplrc-cla.com/check-session', { withCredentials: true });
+    useEffect(() => {
+        const checkLoginStatus = async () => {
+            try {
+                const response = await axios.get('https://api.tuplrc-cla.com/check-session', { withCredentials: true });
                 
-    //             if (response.data.loggedIn) {
-    //                 // If the user is logged in, redirect to the dashboard
-    //                 navigate('/dashboard');
-    //             }
-    //         } catch (error) {
-    //             console.error('Error checking session:', error);
-    //         }
-    //     };
+                if (response.data.loggedIn) {
+                    // If the user is logged in, redirect to the dashboard
+                    navigate('/dashboard');
+                }
+            } catch (error) {
+                console.error('Error checking session:', error);
+            }
+        };
 
-    //     checkLoginStatus();
-    // }, [navigate]);
+        checkLoginStatus();
+    }, [navigate]);
 
     // Function to handle login
     const login = async () => {
